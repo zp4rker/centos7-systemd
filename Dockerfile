@@ -24,3 +24,5 @@ RUN make altinstall
 # Remove python source
 WORKDIR /tmp
 RUN rm -rf Python-3.7.11 Python-3.7.11.tgz
+
+WORKDIR /root
