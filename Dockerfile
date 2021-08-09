@@ -1,4 +1,4 @@
-FROM centos:centos7
+FROM centos7-systemd:latest
 
 # Install repo for latest git
 COPY wandisco-git.repo /etc/yum.repos.d/wandisco-git.repo
@@ -24,25 +24,3 @@ RUN make altinstall
 # Remove python source
 WORKDIR /tmp
 RUN rm -rf Python-3.7.11 Python-3.7.11.tgz
-
-# Install SSH
-RUN yum install -y openssh-server
-
-# Generate host keys
-RUN ssh-keygen -A
-
-# Permit root login
-RUN sed -i "s/#PermitRootLogin/PermitRootLogin/g" /etc/ssh/sshd_config
-
-# Expose ssh port
-EXPOSE 22
-
-# Expose http and https ports
-EXPOSE 80 443
-
-# Set root password
-ENV password=password123
-RUN echo "$password" | passwd root --stdin
-
-# Start as machine container
-CMD /usr/sbin/init
