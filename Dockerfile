@@ -19,7 +19,7 @@ RUN tar xzvf Python-2.7.16.tgz
 WORKDIR ./Python-2.7.16
 RUN ./configure --with-ensurepip=install
 RUN make -j 8
-RUN make altinstall
+RUN make install
 
 # Remove python source
 WORKDIR /tmp
