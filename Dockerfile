@@ -25,4 +25,5 @@ RUN make install
 WORKDIR /tmp
 RUN rm -rf Python-2.7.16 Python-2.7.16.tgz
 
+# Change workdir back to /root
 WORKDIR /root
