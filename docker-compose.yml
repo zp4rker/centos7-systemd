@@ -1,6 +1,6 @@
 services:
   server:
-    image: centos7-systemd
+    image: centos7-systemd:py27
     hostname: server
     ports:
       - 192.168.24.1:22:22
